@@ -13,6 +13,9 @@ var interval = null;
 var amplitude = 40;
 var reset = false;
 
+var timepernote = 0;
+var length = 0; //length of noteslist (how many we go thru --> how long note should play)
+
 
 
 notenames = new Map();
@@ -39,7 +42,7 @@ function frequency(pitch) {
     oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);
 
     gainNode.gain.setValueAtTime(100, audioCtx.currentTime);
-    gainNode.gain.setValueAtTime(0, audioCtx.currentTime + 0.9);
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime + (timepernote - 1000) -0.1);
 
     oscillator.connect(gainNode);
     gainNode.connect(audioCtx.destination);
@@ -55,6 +58,9 @@ function handle() {
     var usernotes = String(input.value);
     var noteslist = [];
 
+    length = usernotes.length;
+    timepernote = (6000 / length);
+
     for (i = 0; i < usernotes.length; i++) {
            noteslist.push(notenames.get(usernotes.charAt(i)));       
     }
@@ -69,7 +75,7 @@ function handle() {
            clearInterval(repeat)
        }
 
-   }, 1000)
+   }, timepernote)
 
    audioCtx.resume();   
     gainNode.gain.value = 0.5;
@@ -101,7 +107,7 @@ function drawWave() {
 
 function line() {
     
-    y = height / 2 + amplitude * Math.sin(2 * Math.PI * freq * x);
+    y = height/2 + amplitude * Math.sin(x * 2  * Math.PI * freq * (0.5 * length)); 
     ctx.lineTo(x,y);
     ctx.stroke();
     x = x + 1;
@@ -109,7 +115,7 @@ function line() {
    //increase counter by 1 to show how long interval has been run
    counter++;
 
-   if(counter > 50) {
+   if(counter > (timepernote/20)) {
        clearInterval(interval);
   }
 }
