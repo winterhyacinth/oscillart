@@ -1,11 +1,8 @@
-
 const input = document.getElementById('input');
-
 const audioCtx = new AudioContext();
 
 
-
-//define canvas variables
+//def canvas variables, setup
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d"); 
 var width = ctx.canvas.width;
@@ -35,7 +32,6 @@ frequency(notenames.get(usernotes));
 function frequency(pitch) {
     freq = pitch / 10000;
 
-    // create Oscillator and Gain nodes inside the function
     const oscillator = audioCtx.createOscillator();
     const gainNode = audioCtx.createGain();
 
@@ -53,9 +49,9 @@ function frequency(pitch) {
 }
 
 
-
 function handle() {
-    var reset = true;
+    reset = true;
+    x=0;
     var usernotes = String(input.value);
     var noteslist = [];
 
@@ -86,23 +82,18 @@ var counter = 0;
 
 function drawWave() {
     clearInterval(interval);
-	ctx.clearRect(0, 0, width, height);
-    x = 0;
-    y = height/2;
-    ctx.moveTo(x, y);
-    ctx.beginPath(); 
-    
     counter = 0;
-    interval = setInterval(line, 20);
 
      if (reset) {
        ctx.clearRect(0, 0, width, height);
        x = 0;
-       y = height/2;
+       y = height / 2;
        ctx.moveTo(x, y);
        ctx.beginPath();
+       reset = false;
    }
-   var reset = false;
+       interval = setInterval(line, 20);
+
 
 }
 
