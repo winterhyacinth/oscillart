@@ -14,6 +14,7 @@ var height = ctx.canvas.height;
 
 var interval = null;
 var amplitude = 40;
+var reset = false;
 
 
 
@@ -28,6 +29,8 @@ notenames.set("G", 392.0);
 var usernotes = String(input.value);
 frequency(notenames.get(usernotes)); 
 
+
+
 // define the frequency function
 function frequency(pitch) {
     freq = pitch / 10000;
@@ -40,7 +43,7 @@ function frequency(pitch) {
     oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);
 
     gainNode.gain.setValueAtTime(100, audioCtx.currentTime);
-    gainNode.gain.setValueAtTime(0, audioCtx.currentTime + 1);
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime + 0.9);
 
     oscillator.connect(gainNode);
     gainNode.connect(audioCtx.destination);
@@ -49,17 +52,40 @@ function frequency(pitch) {
     oscillator.stop(audioCtx.currentTime + 1);
 }
 
+
+
 function handle() {
+    var reset = true;
     var usernotes = String(input.value);
-    frequency(notenames.get(usernotes)); 
-   drawWave();
+    var noteslist = [];
+
+    for (i = 0; i < usernotes.length; i++) {
+           noteslist.push(notenames.get(usernotes.charAt(i)));       
+    }
+
+    let j = 0;
+   repeat = setInterval(() => {
+       if (j < noteslist.length) {
+           frequency(parseInt(noteslist[j]));
+           drawWave();
+       j++
+       } else {
+           clearInterval(repeat)
+       }
+
+   }, 1000)
+
    audioCtx.resume();   
     gainNode.gain.value = 0.5;
 }
 
-
 var counter = 0;
+
+
+
+
 function drawWave() {
+    clearInterval(interval);
 	ctx.clearRect(0, 0, width, height);
     x = 0;
     y = height/2;
@@ -69,11 +95,22 @@ function drawWave() {
     counter = 0;
     interval = setInterval(line, 20);
 
+     if (reset) {
+       ctx.clearRect(0, 0, width, height);
+       x = 0;
+       y = height/2;
+       ctx.moveTo(x, y);
+       ctx.beginPath();
+   }
+   var reset = false;
+
 }
+
+
 
 function line() {
     
-    y = height/2 + (amplitude * Math.sin(2(Math.PI * freq * x) ) )
+    y = height / 2 + amplitude * Math.sin(2 * Math.PI * freq * x);
     ctx.lineTo(x,y);
     ctx.stroke();
     x = x + 1;
@@ -84,5 +121,4 @@ function line() {
    if(counter > 50) {
        clearInterval(interval);
   }
-
 }
