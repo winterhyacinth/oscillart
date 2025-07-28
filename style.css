@@ -5,9 +5,25 @@
    font-style: normal;
 }
 
+
+
 :root {
-   --button-text-color: black;
+   --button-text-color: #4932c9;
 }
+
+body {
+  
+  /* cursor: url("/cursor.png"), auto; */
+  cursor: pointer;
+cursor: url("/cursor.png"), auto;
+
+  color: var(#4932c9);
+  /*font-family: "MS ui gothic";*/
+  image-rendering: pixelated;
+  /*font-size: 17px;*/
+  font-size: 18px;
+}
+
 
 
 #canvas {
@@ -24,7 +40,6 @@
    image-rendering: pixelated;
    /*font-size: 16px;*/
    font-size: inherit;
-   font-family: inherit;
    /*padding: 4px;*/
    text-align: center;
 
