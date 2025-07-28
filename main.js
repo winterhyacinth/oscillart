@@ -1,5 +1,4 @@
 const input = document.getElementById('input');
-const audioCtx = new AudioContext();
 const color_picker = document.getElementById('color');
 const vol_slider = document.getElementById('vol-slider');
 const recording_toggle = document.getElementById('record');
@@ -13,13 +12,14 @@ var height = ctx.canvas.height;
 
 var is_recording = false;
 
-
 var interval = null;
-var amplitude = 40;
 var reset = false;
 
 var timepernote = 0;
 var length = 0; //length of noteslist (how many we go thru --> how long note should play)
+
+const audioCtx = new AudioContext();
+const gainNode = audioCtx.createGain();
 
 
 
@@ -33,7 +33,6 @@ notenames.set("F", 349.2);
 notenames.set("G", 392.0);
 var usernotes = String(input.value);
 frequency(notenames.get(usernotes)); 
-
 
 
 // define the frequency function
@@ -63,6 +62,9 @@ function frequency(pitch) {
 
 function handle() {
     reset = true;
+    audioCtx.resume();
+    gainNode.gain.value = 0;
+
     x=0;
     var usernotes = String(input.value);
     var noteslist = [];
@@ -83,19 +85,15 @@ function handle() {
        } else {
            clearInterval(repeat)
        }
+
    }, timepernote)
-   audioCtx.resume();   
-    gainNode.gain.value = 0.5;
+  
 }
 
 var counter = 0;
 
-
-
-
 function drawWave() {
     clearInterval(interval);
-    counter = 0;
 
      if (reset) {
        ctx.clearRect(0, 0, width, height);
@@ -103,9 +101,10 @@ function drawWave() {
        y = height / 2;
        ctx.moveTo(x, y);
        ctx.beginPath();
-       reset = false;
    }
-       interval = setInterval(line, 20);
+   counter = 0;    
+   interval = setInterval(line, 20);
+   reset = false;
 }
 
 function line() {
@@ -147,6 +146,8 @@ if (e.data.size > 0) {
    chunks.push(e.data);
  }
 };
+
+
 recorder.onstop = () => {
    const blob = new Blob(chunks, { type: 'video/webm' });
    const url = URL.createObjectURL(blob);
@@ -159,7 +160,7 @@ recorder.onstop = () => {
 recorder.start();
 
 }
-
+var is_recording = false;
 function toggle() {
    is_recording = !is_recording; 
    if(is_recording){
