@@ -1,5 +1,7 @@
 const input = document.getElementById('input');
 const audioCtx = new AudioContext();
+const color_picker = document.getElementById('color');
+const vol_slider = document.getElementById('vol-slider');
 
 
 //def canvas variables, setup
@@ -41,8 +43,12 @@ function frequency(pitch) {
     oscillator.type = "sine";
     oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);
 
-    gainNode.gain.setValueAtTime(100, audioCtx.currentTime);
-    gainNode.gain.setValueAtTime(0, audioCtx.currentTime + (timepernote - 1000) -0.1);
+
+    gainNode.gain.setValueAtTime(vol_slider.value, audioCtx.currentTime);
+    setting = setInterval(() => {gainNode.gain.value = vol_slider.value}, 1);
+    oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);
+    setTimeout(() => { clearInterval(setting); gainNode.gain.value = 0; }, ((timepernote)-10));
+
 
     oscillator.connect(gainNode);
     gainNode.connect(audioCtx.destination);
@@ -74,9 +80,7 @@ function handle() {
        } else {
            clearInterval(repeat)
        }
-
    }, timepernote)
-
    audioCtx.resume();   
     gainNode.gain.value = 0.5;
 }
@@ -99,16 +103,14 @@ function drawWave() {
        reset = false;
    }
        interval = setInterval(line, 20);
-
-
 }
 
 
 
 function line() {
-    
-    y = height/2 + amplitude * Math.sin(x * 2  * Math.PI * freq * (0.5 * length)); 
+    y = height/2 + ((vol_slider.value/100) *40) * Math.sin(x * 2  * Math.PI * freq * (0.5 * length)); 
     ctx.lineTo(x,y);
+    ctx.strokeStyle = color_picker.value;
     ctx.stroke();
     x = x + 1;
 
