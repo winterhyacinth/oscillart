@@ -52,11 +52,9 @@ cursor: url("/cursor.png"), auto;
 }
 
 .button:active {
-   /*border-style: inset;*/
    border-image: url(button_pressed.png) 4 fill repeat;
 }
 
 .button:disabled {
-   /*border-style: inset;*/
    border-image: url(button_disabled.png) 4 fill repeat;
 }
