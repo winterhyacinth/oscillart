@@ -5,7 +5,6 @@ const recording_toggle = document.getElementById('record');
 
 var interval = null;
 var reset = false;
-var freq = 0;
 
 var timepernote = 0;
 var length = 0; //length of noteslist (how many we go thru --> how long note should play)
@@ -17,6 +16,7 @@ const oscillator = audioCtx.createOscillator();
 oscillator.connect(gainNode);
 gainNode.connect(audioCtx.destination);
 oscillator.type = "sine";
+
 oscillator.start();
 gainNode.gain.value = 0;
 
@@ -28,13 +28,13 @@ var height = ctx.canvas.height;
 
 
 notenames = new Map();
-notenames.set("A", 440);
-notenames.set("B", 493.9);
 notenames.set("C", 261.6);
 notenames.set("D", 293.7);
 notenames.set("E", 329.6);
 notenames.set("F", 349.2);
 notenames.set("G", 392.0);
+notenames.set("A", 440);
+notenames.set("B", 493.9);
 
 
 // define the frequency function
@@ -43,14 +43,11 @@ function frequency(pitch) {
     gainNode.gain.setValueAtTime(100, audioCtx.currentTime);
     setting = setInterval(() => {gainNode.gain.value = vol_slider.value}, 1);
     oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);   
-    
-    
     setTimeout(() => { clearInterval(setting); gainNode.gain.value = 0; }, ((timepernote)-10));
 }
 
 
 function handle() {
-   
     reset = true;
     audioCtx.resume();
     gainNode.gain.value = 0;
@@ -58,7 +55,6 @@ function handle() {
     var usernotes = String(input.value).toUpperCase();
     var noteslist = [];
 
-    
     length = usernotes.length;
     timepernote = (6000 / length);
 
@@ -97,7 +93,6 @@ function drawWave() {
 }
 
 function line() {
-        console.log("x:", x, "freq:", freq, "length:", length, "vol:", vol_slider.value);
     y = height/2 + ((vol_slider.value/100)*40) * Math.sin(x * 2  * Math.PI * freq * (0.5*length)); 
     ctx.strokeStyle = color_picker.value;
     ctx.lineTo(x,y);
