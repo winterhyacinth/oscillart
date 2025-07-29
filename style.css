@@ -12,13 +12,11 @@
    font-style: normal;
 }
 
-
 :root {
    --button-text-color: #4932c9;
 }
 
 body {
-  
    cursor: pointer;
    cursor: url("/cursor.png"), auto;
 
@@ -30,12 +28,16 @@ body {
 
 h1 {
    font-size: 120px;
+   color: rgb(215, 219, 240);
    text-align: center;
    font-weight: bold;
    margin: 0.3em 0;
-   font-family: "Moon";
+   font-family: "Pixelated MS Sans Serif";
 }
 
+#desc {
+   text-align: center;
+}
 
 #container { 
    display: flex;
@@ -54,6 +56,29 @@ gap: 10px;
    width: 900px;
    margin-bottom: 2em;
 }
+
+
+.site-header {
+  padding: 20px;
+  background-color: #0F132D; /* optional */
+}
+
+.title-container {
+  display: flex;
+  align-items: center; /* vertically centers image and title */
+  justify-content: center; /* horizontally centers the whole block */
+  gap: 10px; /* space between image and title */
+}
+
+.logo {
+  height: 90px; /* matches the font size of the title */
+}
+
+.site-title {
+  font-size: 2em; /* adjust as needed */
+  margin: 0;
+}
+
 
 
 .button {
