@@ -16,27 +16,29 @@
         </div>
     </header>
 
+    <div class="left-sidebar-grid">
+    <main class="main-content"> submit notes on the c-major scale and watch them become art!
+        <div id = "container" >
+        <canvas id="canvas">
+        </canvas>
+        </div>
 
-     <div id = "desc"> 
-            submit notes on the c major scale and watch your music become art!
-            <br> <br>
-            adjust your settings for additional flair :3
-             </div>
-     </div>
 
-    <div id = "container" >
-    <canvas id="canvas">
-    </canvas>
+    </main>
+    <section class="left-sidebar">
+        <input type="text" id="input">
+        <button id="submit" class = button onclick="handle()">submit</button>
+        <br>
+        <button id="record" class = button onclick="toggle()">start recording</button> 
+        <br> <br>
+        <input type="color" id="color" value="#ff0000"> <br>
+        <input type="range" min="1" max="100" value="100" id="vol_slider"> <br>
+</section>
+    <footer class="footer">Footer</footer>
     </div>
-    
-    <input type="text" id="input">
-    <button id="submit" class = button onclick="handle()">submit</button>
-    <button id="record" class = button onclick="toggle()">start recording</button>
 
-    <input type="color" id="color" value="#ff0000">
-    <input type="range" min="1" max="100" value="100" id="vol_slider">
-
-    
+     
+   
     <script src="main.js"></script>
 </body>
 </html>
