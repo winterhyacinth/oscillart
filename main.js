@@ -30,7 +30,6 @@ var ctx = canvas.getContext("2d");
 var width = ctx.canvas.width;
 var height = ctx.canvas.height;
 
-
 notenames = new Map();
 notenames.set("C", 261.6);
 notenames.set("D", 293.7);
@@ -39,6 +38,26 @@ notenames.set("F", 349.2);
 notenames.set("G", 392.0);
 notenames.set("A", 440);
 notenames.set("B", 493.9);
+
+
+const root = document.documentElement;
+
+
+[colorpick1, colorpick2, colorpick3].forEach(el => el.addEventListener('input', updateColors));
+updateColors();
+
+function updateColors() {
+  document.documentElement.style.setProperty('--color1', colorpick1.value);
+  document.documentElement.style.setProperty('--color2', colorpick2.value);
+  document.documentElement.style.setProperty('--color3', colorpick3.value);
+
+    const gradient = ctx.createLinearGradient(0, 0, width, height);
+  gradient.addColorStop(0, colorpick1.value);
+  gradient.addColorStop(0.5, colorpick2.value);
+  gradient.addColorStop(1, colorpick3.value);
+  return gradient;
+}
+
 
 
 // define the frequency function
