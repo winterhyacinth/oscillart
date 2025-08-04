@@ -16,7 +16,7 @@
    --button-text-color: #4932c9;
    --color1: #BFBFEF;
    --color2: #32328F;
-   --color3: #A6A6d9;
+   --color3: #ffffff;
 }
 
 
@@ -29,12 +29,12 @@ input[type="text"] {
   background-color: #1a1a2e;
   border: 1px solid #444;
   padding: 8px;
+  cursor: url("/click.png"), auto;
 }
 
 body {
    margin:0;
    padding: 0;
-   cursor: pointer;
    cursor: url("/cursor.png"), auto;
 
   color: var(#4932c9);
@@ -107,6 +107,27 @@ gap: 10px;
    margin-bottom: 2em;
 }
 
+#vol_slider {
+   display: flex;
+    margin: 4px 0;
+    width: 100%; 
+    height: 16px; 
+    border-radius: 8px;
+    appearance: none;
+   background: linear-gradient(to right, #4D23CF, white);
+   cursor: url("/click.png"), auto;
+
+   }
+      
+    #vol_slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #2a1568;
+      border: none;
+      margin-top: -4px;
+    }
 
 .site-header {
   padding: 20px;
@@ -175,8 +196,8 @@ gap: 10px;
    image-rendering: pixelated;
    font-size: 24px;
    text-align: center;
-   width: 166px;
-  height: 60px;
+   width: 169px;
+  height: 45px;
 
    border: 4px solid transparent;
    border-image: url(button.png) 4 fill repeat;

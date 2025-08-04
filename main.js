@@ -4,7 +4,6 @@ const colorpick2 = document.getElementById('color2');
 const colorpick3 = document.getElementById('color3');
 
 
-const vol_slider = document.getElementById('vol_slider');
 const recording_toggle = document.getElementById('record');
 
 var interval = null;
@@ -43,6 +42,23 @@ notenames.set("B", 493.9);
 const root = document.documentElement;
 
 
+const slider = document.getElementById('vol_slider');
+function updateSliderFill() {
+   const val = slider.value;
+  const min = slider.min;
+  const max = slider.max;
+  const percent = ((val - min) / (max - min)) * 100;
+
+  slider.style.background = `linear-gradient(to right, #4D23CF ${percent}%, #FFFFFF ${percent}%)`;
+}
+
+slider.addEventListener('input', updateSliderFill);
+updateSliderFill(); // Initial fill
+
+
+
+
+
 [colorpick1, colorpick2, colorpick3].forEach(el => el.addEventListener('input', updateColors));
 updateColors();
 
@@ -64,7 +80,7 @@ function updateColors() {
 function frequency(pitch) {
     freq = pitch / 10000;
     gainNode.gain.setValueAtTime(100, audioCtx.currentTime);
-    setting = setInterval(() => {gainNode.gain.value = vol_slider.value}, 1);
+    setting = setInterval(() => {gainNode.gain.value = slider.value}, 1);
     oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);   
     setTimeout(() => { clearInterval(setting); gainNode.gain.value = 0; }, ((timepernote)-10));
 }
@@ -116,7 +132,7 @@ function drawWave() {
 }
 
 function line() {
-    y = height/2 + ((vol_slider.value/100)*40) * Math.sin(x * 2  * Math.PI * freq * (0.5*length)); 
+    y = height/2 + ((slider.value/100)*40) * Math.sin(x * 2  * Math.PI * freq * (0.5*length)); 
     
     
     const gradient = ctx.createLinearGradient(0, 0, width, 0);
