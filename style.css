@@ -19,10 +19,11 @@
    --color3: #A6A6d9;
 }
 
+
 input[type="text"] {
   font-family: "Pixelated MS Sans Serif";
-  font-size: 35px;
-  width: 400px;
+  font-size: 28px;
+  width: 325px;
   height: 100px;
   color: #ffffff;
   background-color: #1a1a2e;
@@ -43,7 +44,7 @@ body {
 }
 
 h1 {
-   font-size: 120px;
+   font-size: 100px;
    text-align: center;
    font-weight: bold;
    margin: 0.3em 0;
@@ -100,9 +101,9 @@ gap: 10px;
 }
 
 #canvas {
-   border: 5px solid #0F132D;
+   border: 4px solid #0F132D;
    height: 500px;
-   width: 900px;
+   width: 720px;
    margin-bottom: 2em;
 }
 
@@ -136,6 +137,7 @@ gap: 10px;
 /* general column padding */
 .left-sidebar-grid > * {
     padding:1rem;
+    200px auto;
 }
 
 /* assign columns to grid areas */
@@ -158,7 +160,7 @@ gap: 10px;
 /* tablet breakpoint */
 @media (min-width:768px) {
     .left-sidebar-grid {
-        grid-template-columns:repeat(1fr, 3fr, 0fr);
+        grid-template-columns: 1fr 3fr;
         grid-template-areas:
             'header header header'
             'left-sidebar main-content main-content'
@@ -171,9 +173,9 @@ gap: 10px;
    color: var(--button-text-color);
    font-family: "Pixelated MS Sans Serif";
    image-rendering: pixelated;
-   font-size: 30px;
+   font-size: 24px;
    text-align: center;
-   width: 207px;
+   width: 166px;
   height: 60px;
 
    border: 4px solid transparent;
