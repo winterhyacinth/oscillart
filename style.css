@@ -14,6 +14,9 @@
 
 :root {
    --button-text-color: #4932c9;
+   --color1: #BFBFEF;
+   --color2: #32328F;
+   --color3: #A6A6d9;
 }
 
 input[type="text"] {
@@ -41,11 +44,12 @@ body {
 
 h1 {
    font-size: 120px;
-   color: rgb(191, 199, 239);
    text-align: center;
    font-weight: bold;
    margin: 0.3em 0;
    font-family: "Moon";
+   color: var(--color1);
+
 }
 
 #desc {
@@ -60,8 +64,14 @@ flex-direction: column;
 gap: 10px;
 }
 
+#colorcontainer {
+     display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
 #canvas {
-   border: 5px solid black;
+   border: 5px solid #0F132D;
    height: 500px;
    width: 900px;
    margin-bottom: 2em;
@@ -82,11 +92,6 @@ gap: 10px;
 
 .logo {
   height: 120px; /* matches the font size of the title */
-}
-
-.site-title {
-  font-size: 2em; /* adjust as needed */
-  margin: 0;
 }
 
 
@@ -116,7 +121,9 @@ gap: 10px;
 }
 .left-sidebar-grid > .footer {
     grid-area:footer;
-    background:#72c2f1;
+    background:#0F132D;
+   text-align: center;
+    color: #BFBFEF;
 }
 
 /* tablet breakpoint */

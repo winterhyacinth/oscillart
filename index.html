@@ -21,7 +21,6 @@
           <section>
                 <div class="window">
                 <div class="title ico-music">
-                    <span>music player</span>
                 </div>
                 <div class="content" style="padding: 0;">
                 <div id = "container" >
@@ -39,12 +38,17 @@
         <button id="submit" class = button onclick="handle()">submit</button>
         <button id="record" class = button onclick="toggle()">start recording</button> 
         <br> <br>
-        <input type="color" id="color" value="#ff0000"> <br>
+        <div id = colorcontainer>
+            <input type="color" id="color1" value="#1a1a2e"> 
+            <input type="color" id="color2" value="#32328F"> 
+            <input type="color" id="color3" value="#A6A6D9"> 
+        </div>
+
+        <br>
         <input type="range" min="1" max="100" value="100" id="vol_slider"> <br>
 </section>
-    <footer class="footer">Footer</footer>
+    <footer class="footer">created by winterhyacinth on github. </footer>
     </div>
-
      
    
     <script src="main.js"></script>
