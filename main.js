@@ -1,7 +1,7 @@
 const input = document.getElementById('input');
-const color1 = document.getElementById('color1');
-const color2 = document.getElementById('color2');
-const color3 = document.getElementById('color3');
+const colorpick1 = document.getElementById('color1');
+const colorpick2 = document.getElementById('color2');
+const colorpick3 = document.getElementById('color3');
 
 
 const vol_slider = document.getElementById('vol_slider');
@@ -98,7 +98,17 @@ function drawWave() {
 
 function line() {
     y = height/2 + ((vol_slider.value/100)*40) * Math.sin(x * 2  * Math.PI * freq * (0.5*length)); 
-    ctx.strokeStyle = color1.value;
+    
+    
+    const gradient = ctx.createLinearGradient(0, 0, width, 0);
+    gradient.addColorStop(0, colorpick1.value);
+    gradient.addColorStop(0.5, colorpick2.value);
+    gradient.addColorStop(1, colorpick3.value);
+
+
+    ctx.strokeStyle = gradient;
+    ctx.lineStyle = "solid";
+
     ctx.lineTo(x,y);
     ctx.stroke();
     x = x + 1;
