@@ -90,8 +90,8 @@ h1 {
    display: flex;
    height: 100vh;
    align-items:center;
-flex-direction: column;
-gap: 10px;
+   flex-direction: column;
+   gap: 10px;
 }
 
 #colorcontainer {
@@ -114,11 +114,10 @@ gap: 10px;
     height: 16px; 
     border-radius: 8px;
     appearance: none;
-   background: linear-gradient(to right, #4D23CF, white);
+   background: linear-gradient(to right, #4D23CF 0% , white 100%);
    cursor: url("/click.png"), auto;
-
    }
-      
+
     #vol_slider::-webkit-slider-thumb {
       appearance: none;
       width: 22px;

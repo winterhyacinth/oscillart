@@ -43,19 +43,6 @@ const root = document.documentElement;
 
 
 const slider = document.getElementById('vol_slider');
-function updateSliderFill() {
-   const val = slider.value;
-  const min = slider.min;
-  const max = slider.max;
-  const percent = ((val - min) / (max - min)) * 100;
-
-  slider.style.background = `linear-gradient(to right, #4D23CF ${percent}%, #FFFFFF ${percent}%)`;
-}
-
-slider.addEventListener('input', updateSliderFill);
-updateSliderFill(); // Initial fill
-
-
 
 
 
