@@ -32,6 +32,24 @@ input[type="text"] {
   cursor: url("/click.png"), auto;
 }
 
+input[type="color"] {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%; 
+  border: 3px solid #4932c9; 
+  padding: 0;
+  cursor: url("/click.png"), auto;
+  background-color: transparent;
+  margin-right: 8px
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+
 body {
    margin:0;
    padding: 0;
@@ -50,7 +68,6 @@ h1 {
    margin: 0.3em 0;
    font-family: "Moon";
          
-
   font-weight: bold;
   background: linear-gradient(135deg,var(--color1),var(--color2), var(--color3));
   background-size: 200% 200%;
@@ -118,20 +135,23 @@ h1 {
    cursor: url("/click.png"), auto;
    }
 
-    #vol_slider::-webkit-slider-thumb {
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #2a1568;
-      border: none;
-      margin-top: -4px;
+#vol_slider::-webkit-slider-thumb {
+   appearance: none;
+   width: 22px;
+   height: 22px;
+   border-radius: 50%;
+   background: #2a1568;
+   border: none;
+   margin-top: -4px;
     }
 
 .site-header {
   padding: 20px;
-  background-color: #0F132D;
-}
+  background-color: hsl(232, 50%, 12%);
+  background-image:
+   url('stars.jpg');
+   background-repeat: repeat;
+ }
 
 .title-container {
   display: flex;
@@ -169,6 +189,7 @@ h1 {
 .left-sidebar-grid > .left-sidebar {
     grid-area:left-sidebar;
     background:#cfd0f7;
+    border-right: 4px solid #0F132D;
 }
 .left-sidebar-grid > .footer {
     grid-area:footer;
