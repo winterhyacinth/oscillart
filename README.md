@@ -21,7 +21,7 @@ I made this project for Hack Club's Athena Award, specifically so I could practi
 
 * the javascript was also a bit complicated. as i don't have much experience, i would often follow the code from the hack club tutorial, and when it wasn't specific enough on where to put certain lines, i would manage to mess it up somehow and spend around another hour sifting through my code to figure out where i messed up!! but, eventually, i would always manage to debug my code...a true lesson in perserverance or something like that!! 
 
-* at one point i even realized that i was looking at my live preview site at 80% percent zoom so I had to spend a while fixing everything so it would look that way at 100% zoom instead....it look me so much longer to code this than i expected but it was a good experience nonetheless
+* at one point i even realized that i was looking at my live preview site at 80% percent zoom so I had to spend a while fixing everything so it would look that way at 100% zoom instead....it look me double the time to code this (i am a veryyyyy slow coder) than i expected but it was a good experience nonetheless
 
 * anyways despite the hurdles i think i understand a lot more about CSS/JS/HTML now, like how to customize a volume bar or how to make gradient text!!
 
